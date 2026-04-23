@@ -1,0 +1,6 @@
+@EzraTaskApi_HostAddress = http://localhost:5250
+
+GET {{EzraTaskApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
