@@ -1,23 +1,38 @@
-# Ezra Task Manager MVP
+# Ezra Task Manager
 
-This is a full-stack task management system built with a focus on **Clean Architecture** and **N-Tier separation**. My goal was to create a solution that isn't just a "to-do list," but a blueprint for a production-ready service.
+This project is a full-stack Task Management MVP built with a focus on **Clean Architecture** and **Operational Readiness**. My goal was to demonstrate a production-minded approach to a standard problem by prioritizing testability and professional error handling.
 
-### 🏗️ Engineering Approach
-* **Backend (.NET 10):** I organized the API into distinct layers (Controllers, Services, Data) to keep business logic isolated from infrastructure. I used Dependency Injection throughout to ensure the system is decoupled and easy to test.
-* **Operational Readiness:** I implemented a custom Middleware to handle global exceptions. This ensures the API always returns a clean JSON response instead of a raw stack trace if something goes wrong.
-* **Frontend (React):** I went with a component-driven approach and a clean, centered UI. The styles use CSS variables for easy theme management and Inter typography for a modern SaaS feel.
+###  Approach
+* **Backend (.NET 10):** I implemented an N-Tier architecture (API, Service, and Data layers). By using Dependency Injection and Service-level interfaces, I kept the business logic decoupled from the infrastructure, making the system easy to test and extend.
+* **Operational Readiness:** I added custom Exception Middleware to ensure the API returns consistent, developer-friendly JSON responses instead of raw stack traces—a baseline requirement for any production-ready service.
+* **Frontend (React):** I went with a modern, centered UI designed for clarity. I focused on clean typography (Inter) and a card-based layout to provide a professional SaaS aesthetic.
 
-### 🎨 Frontend Details
-* **User Experience:** I focused on a "less is more" interface. The delete actions are context-aware (appearing on hover), and I used a card-based layout to keep the task list focused and readable.
-* **State Management:** Used React Hooks for lightweight, predictable state handling within the application.
+###  Frontend Details
+* **UI/UX:** The interface is built to be "distraction-free," featuring subtle hover effects and dynamic visibility for administrative tasks like deleting items.
+* **State Management:** I used React Functional Components and Hooks for lightweight, predictable state handling across the task list.
 
-### ⚖️ Trade-offs & Future Scaling
-* **Persistence:** For this MVP, I used EF Core In-Memory to keep the setup portable. In a real-world scenario, I’d swap this for a persistent PostgreSQL or SQL Server instance using EF Migrations.
-* **Data Fetching:** For a simple task list, standard hooks work well. As the data grows, I’d move toward **React Query** for better caching and synchronization.
-* **Roadmap:** If I had more time, I’d implement soft deletes, user-based authentication, and SignalR for real-time list updates across different sessions.
+###  Trade-offs & Future Scaling
+* **Persistence:** I used EF Core In-Memory for portability in this MVP. In a production environment, I would swap this for a persistent store like PostgreSQL using EF Migrations.
+* **Data Flow:** For this scale, standard React hooks are sufficient. For a larger application, I’d integrate **React Query** to handle caching and server-state synchronization more efficiently.
+* **Roadmap:** Future additions would include user authentication, soft deletes, and SignalR for real-time updates across clients.
 
-### 🚀 How to Run
-**1. Backend**
+###  Setup & Execution
+
+To run the full application, you will need two terminal windows open (one for the Backend and one for the Frontend).
+
+#### **1. Backend (API)**
+From the root directory:
 ```bash
 cd EzraTaskApi
 dotnet run
+
+The API typically starts at http://localhost:5250. You can verify it's running by checking the Swagger UI at /swagger.
+
+2. Frontend (Web)
+Open a second terminal window. From the root directory:
+
+Bash
+cd ezra-task-web
+npm install
+npm start
+This will launch the React app at http://localhost:3000. The frontend is pre-configured to communicate with the .NET backend.
